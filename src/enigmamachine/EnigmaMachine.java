@@ -65,13 +65,7 @@ public class EnigmaMachine {
             }
         });
         
-        coppia.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String temp=JOptionPane.showInputDialog("Inserisci la coppia di lettere", "A-B");
-                if(temp!=null && !temp.equals("")) c.setPlugBoard(temp.toUpperCase().split("-"));
-            }
-        });
+  
         
         cancella.addActionListener(new ActionListener() {
             @Override
