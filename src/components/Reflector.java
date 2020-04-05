@@ -1,33 +1,28 @@
 package components;
 
 public class Reflector extends EnigmaComponent {
+	private int[] wirings;
+	protected EnigmaComponent next;
+	protected EnigmaComponent previous;
 
-	private int wiring[];
-	public EnigmaComponent next;
-	public EnigmaComponent previous;
-
-	public Reflector(String wiring) {
-		this.wiring = manager.alphabetToIntegerArray(wiring);
+	public Reflector(String wirings) {
+		super(wirings);
 	}
 
 	private int reflectorConnection(int i) {
-		return getMapping(calculateIndex(i, this.previous));
-	}
-
-	protected int getMapping(int i) {
-		return wiring[i];
-	}
-
-	protected int getInverseMapping(int i) {
-		return indexOf(i);
+		return valueAt(calculateIndex(i, this.previous));
 	}
 
 	protected int indexOf(int value) {
 		for (int i = 0; i < 26; i++) {
-			if (wiring[i] == value)
+			if (wirings[i] == value)
 				return i;
 		}
 		return -1;
+	}
+	
+	protected int valueAt(int i) {
+		return wirings[i];
 	}
 
 	@Override
@@ -53,6 +48,12 @@ public class Reflector extends EnigmaComponent {
 	@Override
 	public void setPrevious(EnigmaComponent previous) {
 		this.previous = previous;
+	}
+
+	@Override
+	protected void initializeComponent(String wirings) {
+		this.wirings = manager.alphabetToIntegerArray(wirings);
+		
 	}
 
 }

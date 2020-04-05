@@ -1,4 +1,4 @@
-package enigmamachine;
+package configuration;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -27,11 +27,19 @@ public class WiringManager {
 	}
 
 	public int[] alphabetToIntegerArray(String alphabet) {
-		return alphabet.chars().map(x -> this.letterToInteger(x)).toArray();
+		return alphabet.chars()
+				.map(x -> this.letterToInteger(x))
+				.toArray();
 	}
 
 	public int[][] pairingsToIntegerArrays(String pairings) {
-		return Arrays.stream(pairings.split(" ")).map(x -> alphabetToIntegerArray(x)).toArray(int[][]::new);
+		return Arrays.stream(pairings.split(" "))
+				.map(x -> alphabetToIntegerArray(x))
+				.toArray(int[][]::new);
+	}
+	
+	public String toUpperCase(String settings) {
+		return settings.toUpperCase();
 	}
 
 }

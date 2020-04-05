@@ -4,17 +4,17 @@ public class MovingRotor extends Reflector {
 
 	private int offset;
 
-	public MovingRotor(String wiring) {
-		super(wiring);
+	public MovingRotor(String settings) {
+		super(settings);
 		resetOffset();
 	}
 
 	private int rotorConnection(int i) {
-		return getMapping(calculateIndex(i, this.previous));
+		return valueAt(calculateIndex(i, this.previous));
 	}
 
 	private int inverseRotorConnection(int i) {
-		return getInverseMapping(calculateIndex(i, this.next));
+		return indexOf(calculateIndex(i, this.next));
 	}
 
 	public void setOffset(int offset) {

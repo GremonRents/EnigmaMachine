@@ -6,9 +6,7 @@ public class Plugboard extends EnigmaComponent {
 	private MovingRotor rightMostRotor;
 
 	public Plugboard(String pairings) {
-		initializePlugboard();
-		setPairings(manager.pairingsToIntegerArrays(pairings));
-
+		super(pairings);
 	}
 
 	private void initializePlugboard() {
@@ -33,10 +31,18 @@ public class Plugboard extends EnigmaComponent {
 		return pairings[i];
 	}
 
-	public int firstRotorConnection(int i) {
+	private int firstRotorConnection(int i) {
 		return pairings[calculateIndex(i, rightMostRotor)];
 	}
 
+	
+	@Override
+	protected void initializeComponent(String pairings) {
+		initializePlugboard();
+		if(pairings != null)
+			setPairings(manager.pairingsToIntegerArrays(pairings));	
+	}
+	
 	@Override
 	public int forwardTraversal(int i) {
 		return rightMostRotor.forwardTraversal(this.getPair(i));
@@ -61,5 +67,7 @@ public class Plugboard extends EnigmaComponent {
 	public void setPrevious(EnigmaComponent previous) {
 
 	}
+
+	
 
 }

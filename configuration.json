@@ -1,11 +1,11 @@
 {
-    "plugboard": "AB CD EF",
+    "plugboard": "AV BS CG DL FU HZ IN KM OW RX",
     "rotors": [
-      ["BDFHJLCPRTXVZNYEIWGAKMUSQO", "V"],
-      ["AJDKSIRUXBLHWTMCQGZNPYFVOE", "E"],
-      ["EKMFLGDQVZNTOWYHXUSPAIBRCJ"]
+      ["VZBRGITYUPSDNHLXAWMJQOFECK", "Z"],
+      ["ESOVPZJAYQUIRHXLNFTGKDCMWB", "J"],
+      ["AJDKSIRUXBLHWTMCQGZNPYFVOE"]
     ],
     "reflector": "YRUHQSLDPXNGOKMIEBFZCWVJAT",
-    "grundstellung": "AAA",
-    "ringstellung": "AAA"
+    "grundstellung": "BLA",
+    "ringstellung": "BUL"
   }

@@ -18,54 +18,42 @@ import components.MovingRotor;
 import components.NotchRotor;
 import components.Plugboard;
 import components.Reflector;
+import configuration.ConfigurationParser;
+import configuration.ConfigurationValidator.InitialConfigurationException;
+import configuration.ConfigurationValidator.PlugboardException;
+import configuration.ConfigurationValidator.ReflectorException;
+import configuration.ConfigurationValidator.RotorException;
+import configuration.WiringManager;
 
 /**
  *
  * @author Giuseppe
  */
 public class Encryption {
+	private ConfigurationParser configuration;
 	private WiringManager manager;
 	private List<MovingRotor> rotors;
 	private Plugboard plugboard;
-	private EnigmaComponent previous;
-	private EnigmaComponent next;
 
-	public Encryption() throws FileNotFoundException, IOException {
+	public Encryption() throws Exception {
+		configuration = new ConfigurationParser();
 		manager = WiringManager.getInstance();
 		rotors = new ArrayList<MovingRotor>();
-		initializePreviousAndNext();
 		initializeMachine();
 		readFile();
 	}
 
-	public void initializeMachine() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader("./configuration.enigma"));
-		String linea = "";
-		while ((linea = reader.readLine()) != null)
-			switch (linea.substring(0, 4)) {
-			case "_R0:":
-				addNotchRotor(linea.substring(4));
-				break;
-			case "_R1:":
-				addMovingRotor(linea.substring(4));
-				break;
-			case "_Re:":
-				addReflector(linea.substring(4));
-				break;
-			case "_Pb:":
-				addPlugboard(linea.substring(4));
-				break;
-			case "_Cs:":
-				setRotorsPosition(linea.substring(4).split("|"));
-				break;
-			default:
-			}
-		reader.close();
+	public void initializeMachine() throws Exception {
+		addPlugboard();
+		addRotors();
+		addReflector();
+		addInitialConfiguration();
+		
 	}
 
 	public void readFile() throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter("./output.txt"));
-		String text = Files.readString(Path.of("./input.txt"));
+		String text = Files.readString(Path.of("./input.txt")).toUpperCase();
 
 		for (int i = 0; i < text.length() - 1; i++) {
 			writer.append(encryptLetter(text.charAt(i)));
@@ -74,45 +62,26 @@ public class Encryption {
 		writer.close();
 	}
 
-	public void writeFile() {
 
+	public void addPlugboard() throws PlugboardException {
+		this.plugboard = (Plugboard) configuration.getPlugboard();
+	}
+	
+	public void addRotors() throws RotorException  {
+		MovingRotor rotor = null;
+		while((rotor = (MovingRotor) configuration.getRotor()) != null)
+			rotors.add(rotor);
+	}
+	
+	public void addReflector() throws ReflectorException {
+		configuration.getReflector();
+	}
+	
+	public void addInitialConfiguration() throws InitialConfigurationException {
+		setRotorsPosition(configuration.getInitialConfiguration().split("|"));
 	}
 
-	public void addNotchRotor(String configuration) {
-		String[] parameters = configuration.split("\\|");
-		this.next = new NotchRotor(parameters[0], parameters[1].charAt(0));
-		setPreviousAndNext();
-		rotors.add((NotchRotor) next);
-	}
 
-	public void addMovingRotor(String wiring) {
-		this.next = new MovingRotor(wiring);
-		setPreviousAndNext();
-		rotors.add((MovingRotor) next);
-	}
-
-	public void addReflector(String wiring) {
-		this.next = new Reflector(wiring);
-		setPreviousAndNext();
-	}
-
-	public void addPlugboard(String pairings) {
-		this.next = new Plugboard(pairings);
-		setPreviousAndNext();
-		plugboard = (Plugboard) next;
-	}
-
-	public void setPreviousAndNext() {
-		if (previous != null)
-			previous.setNext(next);
-		next.setPrevious(previous);
-		previous = next;
-	}
-
-	public void initializePreviousAndNext() {
-		this.previous = null;
-		this.next = null;
-	}
 
 	public char encryptLetter(char c) {
 		updateRotorsPosition();
