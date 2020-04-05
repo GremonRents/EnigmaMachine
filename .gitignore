@@ -1,5 +1,7 @@
 .classpath
 .project
+.settings
 /build
 output.txt
 input.txt
+/target/

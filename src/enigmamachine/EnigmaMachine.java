@@ -1,8 +1,6 @@
 package enigmamachine;
 
-
 import java.io.IOException;
-
 
 /**
  *
@@ -10,8 +8,8 @@ import java.io.IOException;
  */
 public class EnigmaMachine {
 
-    public static void main(String[] args) throws IOException {
-    	new Encryption();
-    }
-    
+	public static void main(String[] args) throws IOException {
+		new ConfigurationParser();
+	}
+
 }

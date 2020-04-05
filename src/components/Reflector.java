@@ -1,15 +1,15 @@
 package components;
 
-public class Rotor extends EnigmaComponent{
-	
+public class Reflector extends EnigmaComponent {
+
 	private int wiring[];
 	public EnigmaComponent next;
 	public EnigmaComponent previous;
-	
-	public Rotor(String wiring) {
+
+	public Reflector(String wiring) {
 		this.wiring = manager.alphabetToIntegerArray(wiring);
 	}
-	
+
 	private int reflectorConnection(int i) {
 		return getMapping(calculateIndex(i, this.previous));
 	}
@@ -17,25 +17,24 @@ public class Rotor extends EnigmaComponent{
 	protected int getMapping(int i) {
 		return wiring[i];
 	}
-	
+
 	protected int getInverseMapping(int i) {
 		return indexOf(i);
 	}
-	
+
 	protected int indexOf(int value) {
-		for(int i = 0; i < 26; i++) {
-			if(wiring[i] == value)
+		for (int i = 0; i < 26; i++) {
+			if (wiring[i] == value)
 				return i;
 		}
 		return -1;
 	}
-	
-	
+
 	@Override
 	public int forwardTraversal(int i) {
 		return previous.inverseTraversal(reflectorConnection(i));
 	}
-	
+
 	@Override
 	public int inverseTraversal(int i) {
 		return 0;
@@ -55,7 +54,5 @@ public class Rotor extends EnigmaComponent{
 	public void setPrevious(EnigmaComponent previous) {
 		this.previous = previous;
 	}
-	
-	
 
 }
