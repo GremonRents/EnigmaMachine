@@ -1,0 +1,11 @@
+{
+    "plugboard": "AV BS CG DL FU HZ IN KM OW RX",
+    "rotors": [
+      ["VZBRGITYUPSDNHLXAWMJQOFECK", "Z"],
+      ["ESOVPZJAYQUIRHXLNFTGKDCMWB", "J"],
+      ["AJDKSIRUXBLHWTMCQGZNPYFVOE"]
+    ],
+    "reflector": "YRUHQSLDPXNGOKMIEBFZCWVJAT",
+    "grundstellung": "BLA",
+    "ringstellung": "BUL"
+  }

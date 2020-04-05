@@ -1,0 +1,11 @@
+{
+    "plugboard": "AM FI NV PS TU WZ",
+    "rotors": [
+      ["BDFHJLCPRTXVZNYEIWGAKMUSQO", "V"],
+      ["EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q"],
+      ["AJDKSIRUXBLHWTMCQGZNPYFVOE"]
+    ],
+    "reflector": "EJMZALYXVBWFCRQUONTSPIKHGD",
+    "grundstellung": "ABL",
+    "ringstellung": "XMV"
+  }
