@@ -13,6 +13,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import components.EnigmaComponent;
+import components.MovingRotor;
+import components.NotchRotor;
+import components.Plugboard;
+import components.Rotor;
+
 /**
  *
  * @author Giuseppe

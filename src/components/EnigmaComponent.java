@@ -1,4 +1,6 @@
-package enigmamachine;
+package components;
+
+import enigmamachine.WiringManager;
 
 public abstract class EnigmaComponent {
 	protected WiringManager manager;

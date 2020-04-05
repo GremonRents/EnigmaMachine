@@ -1,4 +1,4 @@
-package enigmamachine;
+package components;
 
 public class Rotor extends EnigmaComponent{
 	
@@ -12,10 +12,6 @@ public class Rotor extends EnigmaComponent{
 	
 	private int reflectorConnection(int i) {
 		return getMapping(calculateIndex(i, this.previous));
-	}
-	
-	protected int calculateIndex(int i, EnigmaComponent rotor) {
-		return (i+this.getOffset()-rotor.getOffset()+26)%26;
 	}
 
 	protected int getMapping(int i) {

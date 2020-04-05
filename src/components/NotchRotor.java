@@ -1,4 +1,4 @@
-package enigmamachine;
+package components;
 
 public class NotchRotor extends MovingRotor{
 	
