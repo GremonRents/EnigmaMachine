@@ -2,6 +2,7 @@
 .project
 .settings
 /build
-output.txt
-input.txt
+./output.txt
+./input.txt
 /target/
+configuration.json

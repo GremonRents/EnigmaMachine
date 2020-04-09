@@ -35,6 +35,12 @@ public class Plugboard extends EnigmaComponent {
 		return pairings[calculateIndex(i, rightMostRotor)];
 	}
 
+	public void turnRotors() {
+		rightMostRotor.turnRotor();
+	}
+	public MovingRotor getRightMostRotor() {
+		return this.rightMostRotor;
+	}
 	
 	@Override
 	protected void initializeComponent(String pairings) {
@@ -45,6 +51,7 @@ public class Plugboard extends EnigmaComponent {
 	
 	@Override
 	public int forwardTraversal(int i) {
+		this.turnRotors();
 		return rightMostRotor.forwardTraversal(this.getPair(i));
 	}
 

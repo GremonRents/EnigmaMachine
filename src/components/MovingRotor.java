@@ -33,6 +33,15 @@ public class MovingRotor extends Reflector {
 		this.offset++;
 	}
 
+	public void turnRotor() {
+		increaseOffset();
+		if(offsetOverflow())
+			resetOffset();
+	}
+	
+	public EnigmaComponent getNext() {
+		return this.next;
+	}
 	@Override
 	public int forwardTraversal(int i) {
 		return next.forwardTraversal(this.rotorConnection(i));
