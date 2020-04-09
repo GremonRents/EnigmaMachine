@@ -1,8 +1,6 @@
 package enigmamachine;
 
-import java.io.IOException;
 
-import configuration.ConfigurationParser;
 
 /**
  *

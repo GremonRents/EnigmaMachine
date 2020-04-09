@@ -111,24 +111,28 @@ public class ConfigurationValidator {
 		
 	}
 	
+	@SuppressWarnings("serial")
 	public static class InitialConfigurationException extends Exception { 
 	    public InitialConfigurationException(String errorMessage) {
 	        super(errorMessage);
 	    }
 	}
 	
+	@SuppressWarnings("serial")
 	public static class PlugboardException extends Exception { 
 	    public PlugboardException(String errorMessage) {
 	        super(errorMessage);
 	    }
 	}
 	
+	@SuppressWarnings("serial")
 	public static class RotorException  extends Exception { 
 	    public RotorException(String errorMessage) {
 	        super(errorMessage);
 	    }
 	}
 	
+	@SuppressWarnings("serial")
 	public static class ReflectorException  extends Exception { 
 	    public ReflectorException(String errorMessage) {
 	        super(errorMessage);

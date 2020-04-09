@@ -1,23 +1,16 @@
 package enigmamachine;
 
-import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
-
-import components.EnigmaComponent;
 import components.MovingRotor;
 import components.NotchRotor;
 import components.Plugboard;
-import components.Reflector;
 import configuration.ConfigurationParser;
 import configuration.ConfigurationValidator.InitialConfigurationException;
 import configuration.ConfigurationValidator.PlugboardException;
